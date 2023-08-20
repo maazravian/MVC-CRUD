@@ -50,5 +50,49 @@ namespace MVC_CRUD.Controllers
             }
             
         }
+
+        public IActionResult Create()
+        {
+            LoadDegrees();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddStudent(student obj)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _DbData.student.Add(obj);
+                    await _DbData.SaveChangesAsync();
+                    return RedirectToAction("StudentList");
+                }
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("StudentList");
+            }
+
+        }
+
+        private void LoadDegrees()
+        {
+            try
+            {
+                List<degree> degrees = new List<degree>();                
+                degrees = _DbData.degrees.ToList();
+                degrees.Insert(0, new degree { DegreeId = 0, DegreeName = "Please Select" });
+
+                ViewBag.Degrees = degrees;
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
     }
 }

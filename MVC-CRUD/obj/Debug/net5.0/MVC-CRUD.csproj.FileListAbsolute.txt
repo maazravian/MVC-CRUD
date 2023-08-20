@@ -68,3 +68,4 @@ C:\Users\Maaz Javed\source\repos\MVC-CRUD\MVC-CRUD\bin\Debug\net5.0\runtimes\win
 C:\Users\Maaz Javed\source\repos\MVC-CRUD\MVC-CRUD\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Maaz Javed\source\repos\MVC-CRUD\MVC-CRUD\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Maaz Javed\source\repos\MVC-CRUD\MVC-CRUD\obj\Debug\net5.0\Razor\Views\Student\StudentList.cshtml.g.cs
+C:\Users\Maaz Javed\source\repos\MVC-CRUD\MVC-CRUD\obj\Debug\net5.0\Razor\Views\Student\Create.cshtml.g.cs
