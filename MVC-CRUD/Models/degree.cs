@@ -13,6 +13,6 @@ namespace MVC_CRUD.Models
         [Column("degree_id")]
         public int DegreeId { get; set; }
         [Column("degree_name")]
-        public int DegreeName { get; set; }
+        public string DegreeName { get; set; }
     }
 }

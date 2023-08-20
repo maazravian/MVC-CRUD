@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MVC_CRUD.Models.student>
     
 @{
-    ViewData ["Title"]= "StudentList";
+    ViewData ["Title"]= "Students Data";
 }
 <h1>Hello From Student View</h1>
 
@@ -37,7 +37,7 @@
                 @Html.DisplayNameFor(model => model.Major)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DegreeId)
+                @Html.DisplayNameFor(model => model.Degree)
             </th>
         </tr>
     </thead>
@@ -69,9 +69,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Major)
             </td>
-            <th>
-                @Html.DisplayNameFor(model => model.DegreeId)
-            </th>
+            <td>
+                @Html.DisplayFor(model => item.Degree)
+            </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { })|
                 @Html.ActionLink("Delete", "Delete", new { })

@@ -37,7 +37,7 @@ namespace MVC_CRUD.Controllers
                                       Phone = a.Phone,
                                       Gender = a.Gender,
                                       Major = a.Major,
-                                      DegreeId = a.DegreeId
+                                      Degree = b ==null?"":b.DegreeName
 
                                   };
                 return View(studentData);
