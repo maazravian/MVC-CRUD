@@ -64,34 +64,66 @@ namespace MVC_CRUD.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _DbData.student.Add(obj);
-                    await _DbData.SaveChangesAsync();
-                    return RedirectToAction("StudentList");
+                    if (_DbData.student.Any(s => s.Email == obj.Email))
+                    {
+                        ModelState.AddModelError("Email", "Email already exists.");
+                    }
+                    else
+                    {
+                        _DbData.student.Add(obj);
+                        await _DbData.SaveChangesAsync();
+                        return RedirectToAction("StudentList");
+                    }
                 }
 
-                return View();
+                LoadDegrees();
+                return View("Create", obj); // Return to the create view with the model data and error message
             }
             catch (Exception ex)
             {
-                return RedirectToAction("StudentList");
+                // Handle exception here if needed
             }
 
+            // If an error occurred, return the same view with the model data and error message
+            LoadDegrees();
+            return View("Create", obj);
         }
+
+
 
         private void LoadDegrees()
         {
             try
             {
-                List<degree> degrees = new List<degree>();                
+                List<degree> degrees = new List<degree>();
                 degrees = _DbData.degrees.ToList();
                 degrees.Insert(0, new degree { DegreeId = 0, DegreeName = "Please Select" });
 
                 ViewBag.Degrees = degrees;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
+            }
+        }
+
+        private bool CheckEmail(string emal)
+        {
+            try
+            {
+                List<student> emails = new List<student>();
+                emails = _DbData.student.ToList();
+                var allEmails = emails.Select(student => student.Email).ToList();
+                if (allEmails.Contains(emal))
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }
